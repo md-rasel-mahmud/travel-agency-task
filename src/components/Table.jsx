@@ -1,5 +1,23 @@
 import PropTypes from "prop-types";
 
+/**
+ *
+ * @param {Array} data
+ * @param {Array} columns
+ * @returns {JSX.Element}
+ * @constructor
+ * @description Table component to render table with data and columns
+ * @example
+ * const data = [
+ * { id: 1, name: 'John Doe', email: 'demo@mail.com' },
+ * ]
+ * const columns = [
+ * { name: 'ID', accessor: 'id' },
+ * { name: 'Name', accessor: 'name' },
+ * { name: 'Email', accessor: 'email' },
+ * ]
+ * <Table data={data} columns={columns} />
+ */
 const Table = ({ data = [], columns }) => {
   return (
     <div>

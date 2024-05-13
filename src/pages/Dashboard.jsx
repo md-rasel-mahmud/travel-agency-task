@@ -2,9 +2,9 @@ import ComponentHeading from "../components/ComponentHeading";
 
 const Dashboard = () => {
   return (
-    <div>
+    <section>
       <ComponentHeading heading="Dashboard" />
-    </div>
+    </section>
   );
 };
 

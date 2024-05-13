@@ -2,9 +2,9 @@ import ComponentHeading from "../components/ComponentHeading";
 
 const CustomPrice = () => {
   return (
-    <div>
+    <section>
       <ComponentHeading heading="Custom Price" />
-    </div>
+    </section>
   );
 };
 

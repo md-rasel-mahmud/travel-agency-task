@@ -1,6 +1,20 @@
 import PropTypes from "prop-types";
 import { Fragment } from "react";
 
+/**
+ * @param {Array} cell
+ * @param {Array} keys
+ * @param {Node | string} divider
+ * @returns {JSX.Element}
+ * @constructor
+ * @description MultipleCell component to render multiple cell with divider
+ * @example
+ * const cell = [
+ * { name: 'John Doe', email: 'demo@mail.com' },
+ * ]
+ * const keys = ['name', 'email']
+ * <MultipleCell cell={cell} keys={keys} divider="," />
+ **/
 const MultipleCell = ({ cell, keys, divider }) => {
   return (
     <div>

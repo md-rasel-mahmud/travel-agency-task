@@ -1,6 +1,18 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
+/**
+ * @param {Array} buttonData
+ * @returns {JSX.Element}
+ * @constructor
+ * @description ButtonGroup component to render button group
+ * @example
+ * const buttonData = [
+ * { title: 'Round Trip', onClick: () => console.log('Round Trip') },
+ * { title: 'One Way', onClick: () => console.log('One Way') },
+ * ]
+ * <ButtonGroup buttonData={buttonData} />
+ **/
 const ButtonGroup = ({ buttonData }) => {
   // STATE FOR ACTIVE BUTTON
   const [index, setIndex] = useState(1);

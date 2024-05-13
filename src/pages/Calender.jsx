@@ -2,9 +2,9 @@ import ComponentHeading from "../components/ComponentHeading";
 
 const Calender = () => {
   return (
-    <div>
+    <section>
       <ComponentHeading heading="Calender" />
-    </div>
+    </section>
   );
 };
 

@@ -1,7 +1,7 @@
 import ComponentHeading from "../components/ComponentHeading";
 import FilterActionBar from "../components/master-price/FilterActionBar";
 import FilterInputBar from "../components/master-price/FilterInputBar";
-import ButtonGroup from "../components/master-price/TopButtonGroup";
+import ButtonGroup from "../components/ButtonGroup";
 import { useState } from "react";
 import Table from "../components/Table";
 import { tableColumns } from "../helpers/master-price/tableColumns";
@@ -69,7 +69,7 @@ const MasterPrice = () => {
   ];
 
   return (
-    <div>
+    <section>
       {/* COMPONENT HEADING */}
       <ComponentHeading heading="Master Price" />
 
@@ -104,7 +104,7 @@ const MasterPrice = () => {
           <p className="text-sm text-red-800">{data.message}</p>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
