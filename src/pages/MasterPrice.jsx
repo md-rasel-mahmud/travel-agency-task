@@ -31,6 +31,7 @@ const MasterPrice = () => {
     console.log(data);
   };
 
+  // USE_EFFECT TO HANDLE SIDE EFFECTS
   useEffect(() => {
     // FETCH DATA FROM TEXT FILE IN DATA FOLDER AND PARSE IT TO JSON
     const fetchAndParseData = async () => {
@@ -44,6 +45,14 @@ const MasterPrice = () => {
       } catch (error) {
         setIsLoading(false);
         console.error("Error fetching data:", error);
+
+        // SET ERROR DATA
+        setData({
+          code: "500",
+          error: "Error fetching data",
+          data: [],
+          message: error.message,
+        });
       }
     };
 
@@ -58,11 +67,13 @@ const MasterPrice = () => {
       <ComponentHeading heading="Master Price" />
       {/* TOP BUTTON GROUP */}
       <TopButtonGroup />
+
       {/* FILTER BAR */}
       <form onSubmit={handleSubmit}>
         <FilterInputBar />
         <FilterActionBar />
       </form>
+
       {/* LOADING */}
       {isLoading && (
         <h3 className="text-xl font-bold inline py-1 animate-pulse">
@@ -70,10 +81,13 @@ const MasterPrice = () => {
         </h3>
       )}
 
-      {/* DATA */}
-      {data?.code == "200" && (
+      {/* SHOW MESSAGE TO UI */}
+      {data?.code == "200" ? (
+        <ComponentHeading heading={data.message} />
+      ) : (
         <div>
-          <ComponentHeading heading={data.message} />
+          <h2 className="text-xl font-bold text-red-600">{data.error}</h2>
+          <p className="text-sm text-red-800">{data.message}</p>
         </div>
       )}
     </div>
