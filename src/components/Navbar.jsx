@@ -3,8 +3,8 @@ import { navMenuItems } from "../helpers/nav-menu-items";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 border-gray-700 sticky top-0">
-      <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto py-4">
+    <nav className="bg-gray-800 border-gray-700 sticky top-0 z-50">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
         <div className="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
           <ul className="flex flex-col font-medium mt-4 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  bg-gray-800 md:bg-transparent border-gray-700">
             {navMenuItems.map((item, index) => (

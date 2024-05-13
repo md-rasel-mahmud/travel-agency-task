@@ -6,7 +6,7 @@ export default function App() {
     <>
       <Navbar />
 
-      <div className="max-w-screen-lg mx-auto">
+      <div className="max-w-screen-xl mx-auto">
         <Outlet />
       </div>
     </>

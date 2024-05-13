@@ -1,3 +1,5 @@
+import Button from "../Button";
+
 const FilterActionBar = () => {
   return (
     <div className="flex gap-2 items-center justify-between flex-wrap py-3  border-b border-blue-500">
@@ -46,12 +48,7 @@ const FilterActionBar = () => {
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-6 py-2 "
-      >
-        Search
-      </button>
+      <Button type="submit">Submit</Button>
     </div>
   );
 };

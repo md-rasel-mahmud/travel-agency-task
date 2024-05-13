@@ -4,6 +4,8 @@ import FilterActionBar from "../components/master-price/FilterActionBar";
 import FilterInputBar from "../components/master-price/FilterInputBar";
 import TopButtonGroup from "../components/master-price/TopButtonGroup";
 import { useState } from "react";
+import Table from "../components/Table";
+import { tableColumns } from "../helpers/master-price/tableColumns";
 
 const MasterPrice = () => {
   const [data, setData] = useState({});
@@ -60,8 +62,6 @@ const MasterPrice = () => {
     fetchAndParseData();
   }, []);
 
-  console.log(data);
-
   return (
     <div>
       <ComponentHeading heading="Master Price" />
@@ -83,7 +83,12 @@ const MasterPrice = () => {
 
       {/* SHOW MESSAGE TO UI */}
       {data?.code == "200" ? (
-        <ComponentHeading heading={data.message} />
+        <>
+          <ComponentHeading heading={data.message} />
+
+          {/* TABLE */}
+          <Table data={data?.flightOffer || []} columns={tableColumns} />
+        </>
       ) : (
         <div>
           <h2 className="text-xl font-bold text-red-600">{data.error}</h2>
