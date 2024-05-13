@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import ComponentHeading from "../components/ComponentHeading";
 import FilterActionBar from "../components/master-price/FilterActionBar";
 import FilterInputBar from "../components/master-price/FilterInputBar";
-import TopButtonGroup from "../components/master-price/TopButtonGroup";
+import ButtonGroup from "../components/master-price/TopButtonGroup";
 import { useState } from "react";
 import Table from "../components/Table";
 import { tableColumns } from "../helpers/master-price/tableColumns";
@@ -62,11 +62,29 @@ const MasterPrice = () => {
     fetchAndParseData();
   }, []);
 
+  // BUTTON DATA
+  const buttonData = [
+    {
+      title: "Round Trip",
+      onClick: () => console.log("Round Trip"),
+    },
+    {
+      title: "One Way",
+      onClick: () => console.log("One Way"),
+    },
+    {
+      title: "Multi City",
+      onClick: () => console.log("Multi City"),
+    },
+  ];
+
   return (
     <div>
+      {/* COMPONENT HEADING */}
       <ComponentHeading heading="Master Price" />
-      {/* TOP BUTTON GROUP */}
-      <TopButtonGroup />
+
+      {/* TOP TAB BUTTON GROUP */}
+      <ButtonGroup buttonData={buttonData} />
 
       {/* FILTER BAR */}
       <form onSubmit={handleSubmit}>
@@ -90,6 +108,7 @@ const MasterPrice = () => {
           <Table data={data?.flightOffer || []} columns={tableColumns} />
         </>
       ) : (
+        // SHOW ERROR MESSAGE TO UI
         <div>
           <h2 className="text-xl font-bold text-red-600">{data.error}</h2>
           <p className="text-sm text-red-800">{data.message}</p>

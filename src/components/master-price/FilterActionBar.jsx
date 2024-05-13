@@ -27,6 +27,7 @@ const FilterActionBar = () => {
             type="radio"
             defaultValue="DUMMY"
             name="environment"
+            defaultChecked
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
           />
           <label htmlFor="dummy" className="ms-2 text-sm text-gray-900 ">
