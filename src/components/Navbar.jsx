@@ -9,9 +9,14 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 border-gray-700 sticky top-0 z-50">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
+      <div
+        className={`max-w-screen-xl flex  items-center justify-between mx-auto py-4 ${
+          isToggleMenu ? "" : "flex-wrap"
+        }`}
+      >
         <div
           className={`${
+            // TOGGLE MENU ON MOBILE VIEW
             isToggleMenu ? "hidden" : ""
           } w-full md:block md:w-auto" id="navbar-solid-bg`}
         >
@@ -44,6 +49,7 @@ const Navbar = () => {
         </div>
         <button
           type="button"
+          // MOBILE VIEW TOGGLE BUTTON FOR MENU
           onClick={() => setIsToggleMenu(!isToggleMenu)}
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden  focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
         >
