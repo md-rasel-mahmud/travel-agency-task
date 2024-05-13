@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import ComponentHeading from "../components/ComponentHeading";
 import FilterActionBar from "../components/master-price/FilterActionBar";
 import FilterInputBar from "../components/master-price/FilterInputBar";
@@ -12,14 +11,14 @@ const MasterPrice = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // HANDLE FORM SUBMIT
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // GET FORM TARGET
     const { target } = e;
 
     // GET FORM DATA
-    const data = {
+    const formData = {
       extraOption: target.extraOption.checked,
       environment: target.environment.value,
       departure: target.departure.value,
@@ -30,37 +29,28 @@ const MasterPrice = () => {
       passengerCount: target.passengerCount.value,
     };
 
-    console.log(data);
+    try {
+      setIsLoading(true);
+      const response = await fetch("/data/LHR_CDG_ADT1_TYPE_1.txt");
+      const jsonData = await response.json();
+
+      setData(jsonData);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Error fetching data:", error);
+
+      // SET ERROR DATA
+      setData({
+        code: "500",
+        error: "Error fetching data",
+        data: [],
+        message: error.message,
+      });
+    }
+
+    console.log("formData", formData);
   };
-
-  // USE_EFFECT TO HANDLE SIDE EFFECTS
-  useEffect(() => {
-    // FETCH DATA FROM TEXT FILE IN DATA FOLDER AND PARSE IT TO JSON
-    const fetchAndParseData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch("/data/LHR_CDG_ADT1_TYPE_1.txt");
-        const jsonData = await response.json();
-
-        setData(jsonData);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        console.error("Error fetching data:", error);
-
-        // SET ERROR DATA
-        setData({
-          code: "500",
-          error: "Error fetching data",
-          data: [],
-          message: error.message,
-        });
-      }
-    };
-
-    // CALL FUNCTION
-    fetchAndParseData();
-  }, []);
 
   // BUTTON DATA
   const buttonData = [
